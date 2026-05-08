@@ -78,11 +78,11 @@ export default function Dashboard() {
        style={styles.input}
      >
       <option value="">Select a service</option>
-      <option value="control">Control stomatologic</option>
+      <option value="control stomatologic">Control stomatologic</option>
       <option value="detartraj">Detartraj</option>
       <option value="plomba">Plombă</option>
       <option value="extractie">Extracție</option>
-      <option value="albire">Albire dentară</option>
+      <option value="albire dentara">Albire dentară</option>
      </select>
 
         <input
@@ -109,6 +109,12 @@ export default function Dashboard() {
 
         <button onClick={handleSubmit} style={styles.button}>
           Book appointment
+        </button>
+
+        <button onClick={() => router.push("/allAppointments")}
+              style={styles.secondaryButton}
+        >
+          View your appointments
         </button>
       </div>
     </div>
@@ -146,5 +152,13 @@ const styles = {
     border: "none",
     borderRadius: 5,
     cursor: "pointer",
+  },
+  secondaryButton: {
+  padding: 10,
+  background: "#16a34a",
+  color: "white",
+  border: "none",
+  borderRadius: 5,
+  cursor: "pointer",
   },
 };
