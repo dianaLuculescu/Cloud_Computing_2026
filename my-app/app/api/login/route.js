@@ -1,30 +1,48 @@
 import { getCollection } from "@/lib/mongodb";
+import bcrypt from "bcryptjs";
 
 export async function POST(req) {
   const body = await req.json();
-  const { service, date, time } = body;
+  const { email, password } = body;
 
-  const appointments = await getCollection("appointments");
+  const users = await getCollection("users");
 
-  // 🔥 verificare corectă conflict
-  const existing = await appointments.findOne({
-    date: date,
-    time: time,
+  // caută userul după email
+  const user = await users.findOne({
+    email,
   });
 
-  if (existing) {
+  // dacă nu există
+  if (!user) {
     return Response.json(
-      { message: "This time slot is already booked" },
-      { status: 400 }
+      { message: "Invalid credentials" },
+      { status: 401 }
     );
   }
 
-  await appointments.insertOne({
-    service,
-    date,
-    time,
-    createdAt: new Date(),
+  // compară parola introdusă cu hash-ul din DB
+  const validPassword = await bcrypt.compare(
+    password,
+    user.password
+  );
+
+  // dacă parola e greșită
+  if (!validPassword) {
+    return Response.json(
+      { message: "Invalid credentials" },
+      { status: 401 }
+    );
+  }
+
+  // creează cookie
+  const response = Response.json({
+    message: "Login successful",
   });
 
-  return Response.json({ message: "Appointment created" });
+  response.headers.set(
+    "Set-Cookie",
+    `userId=${user._id}; Path=/; HttpOnly`
+  );
+
+  return response;
 }

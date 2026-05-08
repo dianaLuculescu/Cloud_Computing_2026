@@ -1,6 +1,7 @@
 import { getCollection } from "@/lib/mongodb";
 import { cookies } from "next/headers";
 import { ObjectId } from "mongodb";
+import sgMail from "@/lib/sendgrid";
 
 export async function POST(req) {
   const body = await req.json();
@@ -45,6 +46,27 @@ export async function POST(req) {
     userEmail: user.email,
     createdAt: new Date(),
   });
+
+  try {
+  await sgMail.send({
+    to: user.email,
+    from: process.env.SENDGRID_FROM_EMAIL,
+    subject: "Appointment Confirmation",
+    html: `
+      <h2>Appointment confirmed</h2>
+
+      <p><b>Service:</b> ${service}</p>
+      <p><b>Date:</b> ${date}</p>
+      <p><b>Time:</b> ${time}</p>
+
+      <br/>
+
+      <p>Thank you for booking with us!</p>
+    `,
+  });
+} catch (err) {
+  console.log(err);
+}
 
   return Response.json({ message: "Appointment created" });
 }
