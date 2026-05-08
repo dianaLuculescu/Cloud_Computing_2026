@@ -1,29 +1,30 @@
 import { getCollection } from "@/lib/mongodb";
-import bcrypt from "bcryptjs";
 
 export async function POST(req) {
-  const { email, password } = await req.json();
+  const body = await req.json();
+  const { service, date, time } = body;
 
-  const users = await getCollection("users");
+  const appointments = await getCollection("appointments");
 
-  const user = await users.findOne({ email });
+  // 🔥 verificare corectă conflict
+  const existing = await appointments.findOne({
+    date: date,
+    time: time,
+  });
 
-  if (!user) {
-    return Response.json({ message: "Invalid credentials" }, { status: 401 });
+  if (existing) {
+    return Response.json(
+      { message: "This time slot is already booked" },
+      { status: 400 }
+    );
   }
 
-  const isMatch = await bcrypt.compare(password, user.password);
+  await appointments.insertOne({
+    service,
+    date,
+    time,
+    createdAt: new Date(),
+  });
 
-  if (!isMatch) {
-    return Response.json({ message: "Invalid credentials" }, { status: 401 });
-  }
-
-  const response = Response.json({ message: "Login successful" });
-
-  response.headers.set(
-    "Set-Cookie",
-    `userId=${user._id}; Path=/; HttpOnly`
-  );
-
-  return response;
+  return Response.json({ message: "Appointment created" });
 }
