@@ -28,7 +28,13 @@ export default function Login() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={{ color: "black", fontWeight: "bold" }}>Login</h1>
+
+      <div style={{ textAlign: "center", marginBottom: 20 }}>
+          <span style={{ fontSize: 40 }}>🦷</span>
+          <h1 style={{ color: "black", fontWeight: "bold", fontSize: 22}}>Dental Care Clinique</h1>
+      </div>
+
+        <h1 style={{ color: "black", fontWeight: "bold", textAlign: "center" }}>Login</h1>
 
         <input
           style={{ ...styles.input, color: "black" }}
