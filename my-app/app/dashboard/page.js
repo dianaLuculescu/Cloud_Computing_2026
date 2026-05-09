@@ -89,6 +89,7 @@ export default function Dashboard() {
           name="date"
           type="date"
           value={form.date}
+          min={new Date().toISOString().split("T")[0]}
           onChange={handleChange}
           style={{ ...styles.input, color: "black" }}
         />
@@ -116,6 +117,13 @@ export default function Dashboard() {
         >
           View your appointments
         </button>
+
+        <button onClick={() => router.push("/profile")}
+              style={styles.backButton}
+        >
+          Profile
+        </button>
+
       </div>
     </div>
   );
@@ -147,18 +155,26 @@ const styles = {
   },
   button: {
     padding: 10,
-    background: "#2563eb",
+    background: "#1c53cb",
     color: "white",
     border: "none",
     borderRadius: 5,
     cursor: "pointer",
   },
   secondaryButton: {
-  padding: 10,
-  background: "#16a34a",
-  color: "white",
-  border: "none",
-  borderRadius: 5,
-  cursor: "pointer",
+    padding: 10,
+    background: "#a3167b",
+    color: "white",
+    border: "none",
+    borderRadius: 5,
+    cursor: "pointer",
+  },
+  backButton: {
+    padding: 10,
+    background: "#6b24c1",
+    color: "white",
+    border: "none",
+    borderRadius: 5,
+    cursor: "pointer",
   },
 };
