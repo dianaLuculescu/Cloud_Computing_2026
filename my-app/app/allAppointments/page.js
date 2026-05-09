@@ -43,7 +43,16 @@ export default function MyAppointments() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={{ color: "black" }}>Your Appointments</h1>
+        <h1     
+          style={{ 
+            color: "black",
+            textAlign: "center",
+            fontSize: "28px",
+            fontWeight: "bold",
+            marginBottom: "20px",
+          }}>
+            Your Appointments
+        </h1>
 
          <button
            onClick={() => (window.location.href = "/dashboard")}
@@ -51,7 +60,7 @@ export default function MyAppointments() {
              marginTop: 10,
              marginBottom: 20,
              padding: 10,
-             background: "#16a34a",
+             background: "#5c14ae",
              color: "white",
              border: "none",
              borderRadius: 5,
@@ -203,7 +212,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     paddingTop: 50,
-    background: "#f3f4f6",
+    background: "#acc2ee",
   },
 
   card: {
@@ -244,7 +253,7 @@ const styles = {
 
   editButton: {
     padding: 8,
-    background: "#2563eb",
+    background: "#0c49cd",
     color: "white",
     border: "none",
     borderRadius: 5,
@@ -253,7 +262,7 @@ const styles = {
 
   deleteButton: {
     padding: 8,
-    background: "#dc2626",
+    background: "#c71919",
     color: "white",
     border: "none",
     borderRadius: 5,

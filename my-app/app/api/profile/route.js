@@ -24,6 +24,7 @@ export async function GET() {
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
+    profileImage: user.profileImage || "",
   });
 }
 
@@ -52,6 +53,7 @@ export async function PUT(req) {
         firstName: body.firstName,
         lastName: body.lastName,
         email: body.email,
+        profileImage: body.profileImage,
       },
     }
   );

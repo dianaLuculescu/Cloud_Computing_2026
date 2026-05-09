@@ -8,6 +8,7 @@ export default function Profile() {
     firstName: "",
     lastName: "",
     email: "",
+    profileImage: "",
   });
 
   const [message, setMessage] = useState("");
@@ -17,6 +18,26 @@ export default function Profile() {
   useEffect(() => {
     fetchProfile();
   }, []);
+
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    setForm({
+      ...form,
+      profileImage: data.url,
+    });
+  };
 
   const fetchProfile = async () => {
     const res = await fetch("/api/profile");
@@ -50,13 +71,31 @@ export default function Profile() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <button onClick={() => router.push("/dashboard")}
-            style={styles.backButton}
-        >
-            Back
-        </button>
 
-        <h1 style={{ color: "black" }}>Profile</h1>
+        <h1 
+          style={{ 
+            color: "black",
+            textAlign: "center",
+            fontSize: "28px",
+            fontWeight: "bold",
+            marginBottom: "20px",
+           }}>
+            Profile
+        </h1>
+
+        {form.profileImage && (
+           <img
+           src={form.profileImage}
+           alt="Profile"
+           width={120}
+           style={{
+             borderRadius: "50%",
+             marginTop: 10,
+             display: "block",
+             margin: "0 auto",
+           }}
+           />
+        )}
 
         {message && (
           <p style={{ color: "green" }}>
@@ -88,12 +127,29 @@ export default function Profile() {
           style={styles.input}
         />
 
+        <input
+          type="file"
+          onChange={uploadImage}
+          style={{
+            color: "black",
+            marginTop: 10,
+          }}
+        />
+
+
         <button
           onClick={handleSave}
           style={styles.button}
         >
           Save profile
         </button>
+
+                <button onClick={() => router.push("/dashboard")}
+            style={styles.backButton}
+        >
+            Back
+        </button>
+
       </div>
     </div>
   );
@@ -105,7 +161,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "#f3f4f6",
+    background: "#acc2ee",
   },
 
   card: {
@@ -120,14 +176,14 @@ const styles = {
 
   input: {
     padding: 10,
-    border: "1px solid #ccc",
+    border: "1px solid #e90792",
     borderRadius: 5,
     color: "black",
   },
 
   button: {
     padding: 10,
-    background: "#29a041",
+    background: "#92129d",
     color: "white",
     border: "none",
     borderRadius: 5,
@@ -136,7 +192,7 @@ const styles = {
 
   backButton: {
     padding: 10,
-    background: "#2563eb",
+    background: "#0c41b2",
     color: "white",
     border: "none",
     borderRadius: 5,

@@ -28,7 +28,7 @@ export default function Login() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={{ color: "black" }}>Login</h1>
+        <h1 style={{ color: "black", fontWeight: "bold" }}>Login</h1>
 
         <input
           style={{ ...styles.input, color: "black" }}
@@ -64,7 +64,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "#f3f4f6",
+    background: "#acc2ee",
   },
   card: {
     padding: 30,

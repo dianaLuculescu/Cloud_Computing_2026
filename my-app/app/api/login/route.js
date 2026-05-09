@@ -7,12 +7,10 @@ export async function POST(req) {
 
   const users = await getCollection("users");
 
-  // caută userul după email
   const user = await users.findOne({
     email,
   });
 
-  // dacă nu există
   if (!user) {
     return Response.json(
       { message: "Invalid credentials" },
@@ -20,13 +18,11 @@ export async function POST(req) {
     );
   }
 
-  // compară parola introdusă cu hash-ul din DB
   const validPassword = await bcrypt.compare(
     password,
     user.password
   );
 
-  // dacă parola e greșită
   if (!validPassword) {
     return Response.json(
       { message: "Invalid credentials" },
@@ -34,7 +30,6 @@ export async function POST(req) {
     );
   }
 
-  // creează cookie
   const response = Response.json({
     message: "Login successful",
   });

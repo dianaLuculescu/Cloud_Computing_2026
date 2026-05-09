@@ -64,7 +64,16 @@ export default function Dashboard() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={{ color: "black" }}>🦷 Book a dentist appointment</h1>
+        <h1 
+          style={{ 
+            color: "black",
+            textAlign: "center",
+            fontSize: "20px",
+            fontWeight: "bold",
+            marginBottom: "20px",
+          }}>
+            🦷 Book a dentist appointment
+        </h1>
 
      {message && (
        <p style={{ color: "#16a34a", fontWeight: "bold" }}>
@@ -135,7 +144,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "#f3f4f6",
+    background: "#acc2ee",
 
   },
   card: {
