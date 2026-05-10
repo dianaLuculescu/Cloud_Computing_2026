@@ -6,8 +6,6 @@
 ---
 
 - **Link Publicare:** [https://cloud-computing-2026.vercel.app/](https://cloud-computing-2026.vercel.app/)
-<<<<<<< HEAD
-- **Link Video Prezentare:** [https://youtu.be/sU0k51sksUU](https://youtu.be/sU0k51sksUU)
 
 - **Link Video Prezentare:** [https://youtu.be/sU0k51sksUU](https://youtu.be/sU0k51sksUU)
 
