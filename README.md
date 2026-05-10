@@ -63,3 +63,11 @@ Aplicația utilizează un API de tip REST construit pe rute serverless.
 
 ### Profile
 ![Profile](my-app/public/screenshots/Imagine5.png)
+
+## 6. Referințe 
+1. [Next.js Documentation](https://nextjs.org/docs) 
+2. [MongoDB Atlas Guide](https://www.mongodb.com/docs/atlas/) 
+3. [Vercel Deployment Docs](https://vercel.com/docs) 
+4. [Cloudinary API Reference](https://cloudinary.com/documentation) 
+5. [SendGrid Mail Service](https://docs.sendgrid.com/) 
+6. [Bcrypt.js Library](https://www.npmjs.com/package/bcryptjs)
