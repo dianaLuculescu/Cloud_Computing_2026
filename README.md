@@ -46,19 +46,6 @@ Aplicația utilizează un API de tip REST construit pe rute serverless.
 | **PUT** | `/api/profile` | Actualizarea datelor în MongoDB. |
 | **POST** | `/api/upload` | Încărcarea imaginii către Cloudinary. |
 
-### Exemplu Request / Response (Programare)
-**Request (POST):**
-```json
-{
-  "service": "Control stomatologic",
-  "date": "2026-06-15",
-  "time": "10:00"
-}
-**Response:**
-```json
-{
-  "message": "Appointment created"
-}
 
 ## 5. Capturi ecran aplicație
 
