@@ -63,20 +63,3 @@ Aplicația utilizează un API de tip REST construit pe rute serverless.
 
 ### Profile
 ![Profile](my-app/public/screenshots/Imagine5.png)
-
-## 5. Capturi ecran aplicație
-
-### Login
-![Login](my-app/public/screenshots/Imagine1.png)
-
-### Register
-![Register](my-app/public/screenshots/Imagine2.png)
-
-### Dashboard
-![Dashboard](my-app/public/screenshots/Imagine3.png)
-
-### Appointments
-![Appointments](my-app/public/screenshots/Imagine4.png)
-
-### Profile
-![Profile](my-app/public/screenshots/Imagine5.png)
